@@ -83,6 +83,16 @@ function groupChannelViewingPeriods(array $inputs): array
   return $channelViewingPeriods;
 }
 
+function calculateTotalHour(array $channelViewingPeriods): float
+{
+  $viewingTimes = [];
+  foreach ($channelViewingPeriods as $period) {
+    $viewingTimes = array_merge($viewingTimes, $period);
+  }
+  $totalMin = array_sum($viewingTimes);
+  return round($totalMin / 60, 1);
+}
+
 $inputs = getInput();
 $channelViewingPeriods = groupChannelViewingPeriods($inputs);
-var_dump($channelViewingPeriods);
+var_dump(calculateTotalHour($channelViewingPeriods));
