@@ -75,35 +75,14 @@ function groupChannelViewingPeriods(array $inputs): array
     $mins = [$min];
 
     if (array_key_exists($chan, $channelViewingPeriods)) {
+
       $mins = array_merge($channelViewingPeriods[$chan], $mins);
     }
-
     $channelViewingPeriods[$chan] = $mins;
   }
   return $channelViewingPeriods;
 }
 
-function calculateTotalHour(array $channelViewingPeriods): float
-{
-  $viewingTimes = [];
-  foreach ($channelViewingPeriods as $period) {
-    $viewingTimes = array_merge($viewingTimes, $period);
-  }
-  $totalMin = array_sum($viewingTimes);
-  return round($totalMin / 60, 1);
-}
-
-function display(array $channelViewingPeriods): void
-{
-  $totalHour = calculateTotalHour($channelViewingPeriods);
-  echo $totalHour . PHP_EOL;
-  foreach ($channelViewingPeriods as $chan => $mins) {
-    echo $chan . ' ' . array_sum($mins) . ' ' . count($mins) . PHP_EOL;
-  }
-}
-
 $inputs = getInput();
-
 $channelViewingPeriods = groupChannelViewingPeriods($inputs);
-display($channelViewingPeriods);
-var_dump(calculateTotalHour($channelViewingPeriods));
+var_dump($channelViewingPeriods);
