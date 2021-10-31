@@ -76,7 +76,6 @@ function groupChannelViewingPeriods(array $inputs): array
     if (array_key_exists($chan, $channelViewingPeriods)) {
       $mins = array_merge($channelViewingPeriods[$chan], $mins);
     }
-
     $channelViewingPeriods[$chan] = $mins;
   }
   return $channelViewingPeriods;
