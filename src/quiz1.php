@@ -57,12 +57,12 @@
  * ie. [1 => [30, 15], 2 => [30] ]
 */
 
-const SPLIT_LENGTH = 2;
+const SPLINT_LENGTH = 2;
 
 function getInput()
 {
   $argument = array_slice($_SERVER['argv'], 1);
-  return array_chunk($argument, SPLIT_LENGTH);
+  return array_chunk($argument, SPLINT_LENGTH);
 }
 
 function groupChannelViewingPeriods(array $inputs): array
