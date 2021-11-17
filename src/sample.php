@@ -1,17 +1,20 @@
 <?php
-// 例題1
-// 文字列が与えられるので、再帰を用いて、文字列の長さをカウントする、lengthStringという関数を作成してください。
+// ローンの金額initialLoan、期日までに払われたかどうかをブーリアンで表したdidPayOnTime を入力として受け取り、$2.5 の手数料とローンの利子を請求する、interestsPaid という関数を作成します。期限内にお金が支払われなかった場合、15% の利子となり、支払われた場合は 2% の利子が請求されます。
 
-function lengthString($string)
+function interestsPaid($initialLoan, $didPayOnTime)
 {
-  if ($string == "") {
-    return 0;
+  $percentLate = 1.15;
+  $percentDefault = 1.02;
+  $serviceFee = 2.5;
+  $total = $initialLoan;
+
+  if ($didPayOnTime) {
+    $total = $total * $percentDefault;
+  } else {
+    $total = $total * $percentLate;
   }
-  return 1 + lengthString(substr($string, 1));
+  return $total + $serviceFee;
 }
 
-// 5
-echo lengthString("hello") . PHP_EOL;
-
-// 10
-echo lengthString("helloworld") . PHP_EOL;
+echo interestsPaid(100, true) . PHP_EOL;
+echo interestsPaid(100, false) . PHP_EOL;
