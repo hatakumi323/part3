@@ -1,16 +1,15 @@
 <?php
-// 3の倍数のときfizz、5の倍数のときbuzz、15の倍数の時、fizzbuzzと返す、echoFizzBuzzという関数を作成してください。
-// これ以外の時は、NOT FOUND! と返してください。
+// 年齢 age と身長 height を受け取り、ジェットコースターに乗れるかどうか判断する、canRideRollerCoaster という関数を作成します。年齢 8 歳以上、かつ身長 120cm 以上でジェットコースターに乗れるとします。
 
-for ($i = 1; $i <= 100; $i++) {
-  if ($i % 3 == 0 && $i % 5 == 0) {
-    echo "FizzBuzz" . PHP_EOL;
-  } else if ($i % 3 == 0) {
-    echo "Fizz" . PHP_EOL;
-  } else if ($i % 5 == 0) {
-    echo "Buzz" . PHP_EOL;
+function canRideRollerCoaster($age, $height)
+{
+  if ($age >= 8 && $height >= 120) {
+    return true;
   } else {
-    echo $i . PHP_EOL;
+    return false;
   }
-  echo " ";
 }
+
+echo canRideRollerCoaster(9, 145) ? "True" :  "False" . PHP_EOL;
+echo canRideRollerCoaster(7, 125) ? "True" :  "False" . PHP_EOL;
+echo canRideRollerCoaster(10, 115) ? "True" :  "False" . PHP_EOL;
