@@ -1,15 +1,38 @@
 <?php
-// 年齢 age と身長 height を受け取り、ジェットコースターに乗れるかどうか判断する、canRideRollerCoaster という関数を作成します。年齢 8 歳以上、かつ身長 120cm 以上でジェットコースターに乗れるとします。
+// さまざまな惑星で物体を yマイルに渡って移動するために必要なエネルギー量を計算してみましょう。
 
-function canRideRollerCoaster($age, $height)
+function forceNewtons($kg, $mpss)
 {
-  if ($age >= 8 && $height >= 120) {
-    return true;
-  } else {
-    return false;
-  }
+  return $kg * $mpss;
 }
 
-echo canRideRollerCoaster(9, 145) ? "True" :  "False" . PHP_EOL;
-echo canRideRollerCoaster(7, 125) ? "True" :  "False" . PHP_EOL;
-echo canRideRollerCoaster(10, 115) ? "True" :  "False" . PHP_EOL;
+function planetGravityMpss($planet)
+{
+  if ($planet == "Earth") {
+    return 9.80665;
+  }
+  if ($planet == "Jupiter") {
+    return 24.79;
+  }
+  if ($planet == "Neptune") {
+    return 11.15;
+  }
+  return 0;
+}
+
+function poundsTokg($pounds)
+{
+  return $pounds * 0.453592;
+}
+
+function joulesByWork($newtons, $meters)
+{
+  return $newtons * $meters;
+}
+
+function energyMovingPoundsByPlanet($planet, $pounds, $meters)
+{
+  return joulesByWork(forceNewtons(poundsToKg($pounds), planetGravityMpss($planet)), $meters);
+}
+// 木星で65ポンドの物体を35メートル移動するのに必要なエネルギー量を返します。
+echo energyMovingPoundsByPlanet("Jupiter", 65, 35) . PHP_EOL;
