@@ -1,44 +1,18 @@
 <?php
-// 文字列が与えられるので、再帰を用いて、文字列の長さをカウントする、lengthStringという関数を作成してください。
+//Catherine は与えられた単語や文章を逆側から読み上げる遊びを友達とやっています。文字列 string が与えられるので、string を反転した文字列を返す reverseString という関数を再帰を使って定義してください。
 
-// function lengthString($string)
-// {
-//   if ($string == "") {
-//     return 0;
-//   }
-//   return 1 + lengthString(substr($string, 1));
-// }
-
-// echo lengthString("Hello") . PHP_EOL;
-
-// 同じサイズの文字列s1、s2が与えられるので、それぞれの文字を1->2の順番で交互に組み合わせる、mergeStringという関数
-
-// function mergeString($s1, $s2)
-// {
-//   if ($s1 == "" || $s2 == "") {
-//     return "";
-//   }
-
-//   return $s1[0] . $s2[0] . mergeString(substr($s1, 1), (substr($s2, 1))) . PHP_EOL;
-// }
-
-// 別解
-// 入力がstr型、出力がint型なので、パラメーターを追加してより多くのデータを追跡することもできます。
-
-function lenString($string)
+function reverseString(string $s): string
 {
-  // パラメータを追加する
-  return lenStringHelper($string, 0);
+  return reverseStringHelper($s[0], 1, $s);
 }
 
-function lenStringHelper($string, $count)
+function reverseStringHelper($reversedString, $index, $originalString)
 {
-  if ($string == "") {
-    return $count;
-  }
-
-  return lenStringHelper(substr($string, 1), $count + 1);
+  // ベースケース indexが元の文字列より長い時
+  if ($index >= strlen($originalString)) return $reversedString;
+  return reverseStringHelper($originalString[$index] . $reversedString, $index + 1, $originalString);
 }
 
-echo lenString("hello") . PHP_EOL;
-echo lenString("helloworld") . PHP_EOL;
+echo (reverseString("abcd")) . PHP_EOL; // dcba
+echo (reverseString("recursion")) . PHP_EOL; // noisrucer
+echo (reverseString("I am a software engineer")) . PHP_EOL;// reenigne erawtfos a ma I
