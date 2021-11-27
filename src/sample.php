@@ -1,28 +1,11 @@
 <?php
-// 文字列が与えられるので、再帰を用いて、文字列の長さをカウントする、lengthStringという関数
+// 2 つの単語が改行区切りで入力されるので「;」区切りで出力してください。
 
-// function lengthString($string)
-// {
-//   if ($string == "") {
-//     return 0;
-//   }
+$input_line = trim(fgets(STDIN));
+for ($i = 0; $i < $input_line; $i++) {
+  $s = trim(fgets(STDIN));
+  $s = str_replace(array("\r\n", "\r", "\n"), "", $s);
+  $s = explode(" ", $s);
 
-//   return 1 + lengthString(substr($string, 1));
-// }
-
-// echo lengthString("hello");
-
-// 入力がstr型、出力がint型なので、パラメーターを追加してより多くのデータを追跡することもできます。
-
-function lenString($string)
-{
-  return lenStringHelper($string, 0);
-}
-
-function lenStringHelper($string, $count)
-{
-  if ($string == "") {
-    return $count;
-  }
-  return lenStringHelper(substr($string, 1), $count + 1);
+  echo "hello = " . $s[0] . " , world = " . $s[1] . "\n";
 }
