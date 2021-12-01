@@ -1,11 +1,14 @@
 <?php
-// 2 つの単語が改行区切りで入力されるので「;」区切りで出力してください。
+//fizzbuzz
 
-$input_line = trim(fgets(STDIN));
-for ($i = 0; $i < $input_line; $i++) {
-  $s = trim(fgets(STDIN));
-  $s = str_replace(array("\r\n", "\r", "\n"), "", $s);
-  $s = explode(" ", $s);
-
-  echo "hello = " . $s[0] . " , world = " . $s[1] . "\n";
+for ($i = 1; $i <= 100; $i++) {
+  if ($i % 3 == 0 && $i % 5 == 0) {
+    echo "FizzBuzz" . PHP_EOL;
+  } else if ($i % 3 == 0) {
+    echo "Fizz" . PHP_EOL;
+  } else if ($i % 5 == 0) {
+    echo "Buzz" . PHP_EOL;
+  } else {
+    echo $i . PHP_EOL;
+  }
 }
