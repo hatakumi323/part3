@@ -1,17 +1,16 @@
 <?php
-
-function g($i)
+function gcd($m, $n)
 {
-  return $i;
-}
 
-function summationOfi($a, $b)
-{
-  if ($b < $a) {
-    return 0;
+  if ($m == $n) {
+    // ベースケース
+    return $m;
+  } else if ($m > $n) {
+    return gcd($m - $n, $n);
+  } else {
+    return gcd($m, $n - $m);
   }
-  return g($b) + summationOfi($a, $b - 1);
 }
 
-// 1から5までを求めます。
-echo summationOfi(1, 5) . PHP_EOL; // 15
+// 44と242の最大公約数を求める
+echo gcd(44, 242) . PHP_EOL;
