@@ -1,16 +1,13 @@
 <?php
-function gcd($m, $n)
-{
+// 7 × n を計算する関数
+// 自身を使って定義する再帰的処理
 
-  if ($m == $n) {
-    // ベースケース
-    return $m;
-  } else if ($m > $n) {
-    return gcd($m - $n, $n);
-  } else {
-    return gcd($m, $n - $m);
+function multiplyOf7($n)
+{
+  if ($n <= 0) {
+    return 0;
   }
+  return multiplyOf7($n - 1) + 7;
 }
 
-// 44と242の最大公約数を求める
-echo gcd(44, 242) . PHP_EOL;
+echo multiplyOf7(5) . PHP_EOL;
